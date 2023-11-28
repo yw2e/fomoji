@@ -372,6 +372,25 @@
 			spriteSheet.spriteWidth, spriteSheet.spriteHeight
 			);
 		}
+	function onTouchStart(event) {
+            var touchY = event.touches[0].clientY;
+            var canvasY = canvas.getBoundingClientRect().top;
+            var jumpThreshold = 100; // Adjust this value based on your game's needs
+
+            if (touchY < canvasY + jumpThreshold) {
+                event.preventDefault();
+                jump(); // Perform jump action here when touch starts
+            }
+        }
+
+        canvas.addEventListener("touchstart", onTouchStart);
+
+        function jump() {
+            // Define the jump action here
+            // For example, modify the nanonaut's vertical speed when jumping
+            nanonautYSpeed = -NANONAUT_JUMP_SPEED;
+            nanonautIsInTheAir = true;
+        }
 </script>
 </body>
 </html>
